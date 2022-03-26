@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
       --accent: hsl(54, 100%, 55%);
       --text: hsl(187, 13%, 86%);
       --bg: hsl(227, 16%, 9%);
-      --base-font: -apple-system, BlinkMacSystem, sans-serif;
+      --base-font: -apple-system, BlinkMacSystem, Arial, Helvetica, sans-serif;
    }
 
    *, *::before, *::after {
@@ -41,6 +41,11 @@ const GlobalStyle = createGlobalStyle`
    table {
       border-collapse: collapse;
       border-spacing: 0;
+   }
+
+   a {
+      color: var(--text);
+      text-decoration: none;
    }
 `
 
