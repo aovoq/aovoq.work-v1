@@ -1,11 +1,12 @@
-import Skills from './components/Skills'
 import RouterConfig from './utils/RouterConfig'
 import styled from 'styled-components'
+import CursorFollow from './components/CursorFollow'
 
 function App() {
    return (
       <Root>
          <RouterConfig />
+         <CursorFollow />
       </Root>
    )
 }
