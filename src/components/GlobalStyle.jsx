@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
       box-sizing: border-box;
       font-size: 62.5%;
       overflow: hidden;
+      user-select: none;
    }
 
    h1, h2, h3, h4, h5, h6 {
