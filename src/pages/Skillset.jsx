@@ -1,20 +1,11 @@
 import styled from 'styled-components'
 import Skills from '../components/Skills'
-import { Link } from 'react-router-dom'
-import { AiOutlineRollback } from 'react-icons/ai'
+import Header from '../components/Header'
 
 const Skillset = () => {
    return (
       <Container>
-         <Logo>
-            <Link to='/'>voq</Link>
-         </Logo>
-         <Back>
-            <Link to='/'>
-               <span>BACK</span>
-               <AiOutlineRollback />
-            </Link>
-         </Back>
+         <Header />
          <Upper>
             <Title>
                <Headline>Skillset</Headline>
@@ -45,29 +36,6 @@ const Container = styled.div`
    flex-direction: column;
    justify-content: space-between;
    position: relative;
-`
-
-const Logo = styled.h1`
-   position: absolute;
-   font-size: 2rem;
-   font-weight: bold;
-   top: 2rem;
-   left: 3rem;
-`
-
-const Back = styled.div`
-   position: absolute;
-   top: 2rem;
-   right: 3rem;
-   font-size: 2rem;
-   a {
-      display: flex;
-      align-items: center;
-   }
-   span {
-      font-size: 1rem;
-      font-weight: bold;
-   }
 `
 
 const Upper = styled.div`
