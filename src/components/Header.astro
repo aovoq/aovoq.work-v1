@@ -175,4 +175,24 @@ const { home = false } = Astro.props
     from { transform-origin: right; transform: scaleX(100%); }
     to { transform-origin: right; transform: scaleX(0); }
   }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .logo {
+      font-size: 1.6rem;
+      top: 1.5rem;
+      left: 2rem;
+    }
+    .back {
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 1.6rem;
+    }
+    .line-static {
+      display: none;
+    }
+    .line-animation {
+      display: none;
+    }
+  }
 </style>

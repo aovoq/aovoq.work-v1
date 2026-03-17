@@ -8,7 +8,7 @@ const projects = [
     title: 'クイズでつなごう エコチル調査 with QuizKnock',
     description: '環境省 x QuizKnock コラボ企画 / web実装 / frontend',
     client: 'baton8',
-    image: 'https://dummyimage.com/800x450/333333/ffe81a.jpg',
+    image: '/images/works/ecochil.png',
     links: [
       { label: 'サイト', url: 'https://ecochil.voq.workers.dev/' },
     ],
@@ -18,7 +18,7 @@ const projects = [
     title: 'Galaxy Ambassador 接客タイプ別診断',
     description: 'SoftBank x Galaxy x QuizKnock 接客スタッフの教育用企画 / web実装 / frontend',
     client: 'baton8',
-    image: 'https://dummyimage.com/800x450/333333/ffe81a.jpg',
+    image: '/images/works/galaxy-type.png',
     links: [
       { label: 'サイト', url: 'https://galaxy-personality.voq.workers.dev/' },
     ],
@@ -28,7 +28,7 @@ const projects = [
     title: 'QuizKnockに挑め！ Galaxyクイズキャンペーン',
     description: 'SoftBank x Galaxy x QuizKnock コラボ企画 / web実装 / frontend',
     client: 'baton8',
-    image: 'https://dummyimage.com/800x450/333333/ffe81a.jpg',
+    image: '/images/works/galaxy-quiz.png',
     links: [
       { label: 'サイト', url: 'https://galaxy-quiz.voq.workers.dev/' },
     ],
@@ -38,7 +38,7 @@ const projects = [
     title: '時の狭間の秘密の頁',
     description: 'JR東海 x QuizKnock コラボ企画 / QR+クイズ / web実装 / frontend, backend',
     client: 'baton8',
-    image: 'https://dummyimage.com/800x450/333333/ffe81a.jpg',
+    image: '/images/works/tx-tokai.png',
     links: [
       { label: 'LP', url: 'https://jr-tokai-portfolio.voq.workers.dev' },
       { label: 'アプリ', url: 'https://jr-tokai-portfolio.voq.workers.dev/game/' },
@@ -59,7 +59,7 @@ const projects = [
     title: '7つの絵画とかくされたヒミツ',
     description: '京都市京セラ美術館 x Artoone コラボ企画 / NFC+クイズ / frontend, backend',
     client: 'baton8',
-    image: '/images/works/7paintings.png',
+    image: '/images/works/kyosera.png',
     links: [
       { label: 'アプリ', url: 'https://dokomiru.pages.dev/#/' },
       { label: 'デバッグ', url: 'https://dokomiru.pages.dev/#/debug' },
@@ -79,7 +79,7 @@ const projects = [
     title: 'TXデジタルクイズラリー',
     description: 'TX x QuizKnock コラボ企画 / QR+クイズ / web実装 / frontend, backend',
     client: 'baton8',
-    image: 'https://dummyimage.com/800x450/333333/ffe81a.jpg',
+    image: '/images/works/tx.png',
     links: [
       { label: 'アプリ', url: 'https://tx-quizrally-portfolio.voq.workers.dev/app' },
       { label: 'デバッグ', url: 'https://tx-quizrally-portfolio.voq.workers.dev/test' },
@@ -102,7 +102,7 @@ const projects = [
     title: 'ぐるっと冒険！万博クイズラリー',
     description: 'EXPO2025 x QuizKnock / NFC+クイズ / web実装 / frontend, backend',
     client: 'baton8',
-    image: 'https://dummyimage.com/800x450/333333/ffe81a.jpg',
+    image: '/images/works/expo2025.png',
     links: [
       { label: 'アプリ', url: 'https://expo2025-quiz-rally.voq.workers.dev/app' },
       { label: 'デバッグ', url: 'https://expo2025-quiz-rally.voq.workers.dev/test' },
@@ -351,6 +351,7 @@ const projects = [
   .project-visual img {
     width: 100%;
     display: block;
+    border-radius: 2px;
     opacity: 0.85;
     transition: opacity 300ms var(--ease-out), transform 300ms var(--ease-out);
   }
@@ -471,6 +472,62 @@ const projects = [
     .answer-link a:hover {
       opacity: 1;
       color: var(--accent);
+    }
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .works-hero {
+      padding: 6rem 2rem 3rem;
+    }
+    .works-title {
+      font-size: 3.2rem;
+    }
+
+    .project {
+      padding: 2.4rem 2rem;
+    }
+    .project-header {
+      gap: 1.2rem;
+      margin-bottom: 1.6rem;
+    }
+    .project-title {
+      font-size: 1.8rem;
+    }
+
+    .project-body {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .project-visual {
+      width: 100%;
+    }
+
+    .project-answers table {
+      font-size: 1rem;
+    }
+    .project-answers th,
+    .project-answers td {
+      padding: 0.4rem 0.6rem 0.4rem 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .works-hero {
+      padding: 5rem 1.6rem 2rem;
+    }
+    .works-title {
+      font-size: 2.6rem;
+    }
+
+    .project {
+      padding: 2rem 1.6rem;
+    }
+    .project-title {
+      font-size: 1.6rem;
+    }
+    .project-description {
+      font-size: 1rem;
     }
   }
 </style>

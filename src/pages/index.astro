@@ -308,4 +308,81 @@ const links = ['about', 'works', 'skillset', 'contact']
   .socials-last {
     padding-right: 0.5rem;
   }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .kanji {
+      font-size: 16rem;
+    }
+    @keyframes kanji-scale-in {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.96); }
+      100% { opacity: 1; transform: translate(-80%, -60%) scale(1); }
+    }
+
+    .profile-wrapper {
+      width: 200px;
+      height: 200px;
+    }
+
+    .name {
+      font-size: 2rem;
+      letter-spacing: 0.8rem;
+      bottom: 3rem;
+    }
+
+    .url {
+      display: none;
+    }
+
+    .links {
+      position: absolute;
+      top: auto;
+      bottom: 8rem;
+      right: auto;
+      left: 50%;
+      transform: translateX(-50%);
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
+      font-size: 1.4rem;
+      letter-spacing: 0.3rem;
+      padding: 1rem;
+    }
+
+    .socials {
+      bottom: 1.2rem;
+      right: 50%;
+      transform: translateX(50%);
+      font-size: 1.3rem;
+      animation-name: socials-fade-in;
+    }
+    @keyframes socials-fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .kanji {
+      font-size: 12rem;
+    }
+
+    .profile-wrapper {
+      width: 160px;
+      height: 160px;
+    }
+
+    .name {
+      font-size: 1.6rem;
+      letter-spacing: 0.5rem;
+      bottom: 2.5rem;
+    }
+
+    .links {
+      font-size: 1.2rem;
+      gap: 1rem;
+      bottom: 6rem;
+    }
+  }
 </style>
