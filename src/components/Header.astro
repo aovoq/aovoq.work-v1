@@ -1,0 +1,169 @@
+---
+import IconRollback from './icons/IconRollback.astro'
+const { home = false } = Astro.props
+---
+
+<h1 class="logo">
+  <div class="cover cover-1"></div>
+  <div class="cover cover-2"></div>
+  <a href="/">voq</a>
+</h1>
+
+{!home ? (
+  <div class="back">
+    <a href="/">
+      <span>BACK</span>
+      <IconRollback size="1em" />
+    </a>
+  </div>
+) : (
+  <>
+    <div class="line-static"></div>
+    <div class="line-animation">
+      <div class="line-1"></div>
+      <div class="line-2"><div></div></div>
+      <div class="line-3"></div>
+    </div>
+  </>
+)}
+
+<style>
+  .logo {
+    position: absolute;
+    z-index: 10;
+    font-size: 2rem;
+    font-weight: bold;
+    top: 2rem;
+    left: 3rem;
+  }
+  .logo > a {
+    visibility: hidden;
+    animation: link-visibility 1ms 500ms forwards;
+  }
+
+  .cover {
+    height: 120%;
+    width: 240%;
+    top: -10%;
+    left: -70%;
+    position: absolute;
+  }
+  .cover-1 {
+    z-index: 2;
+    transform: scaleX(0%);
+    background-color: hsl(59, 93%, 65%);
+    animation: cover-in 300ms 200ms ease-in forwards, cover-out 300ms 400ms ease-out forwards;
+  }
+  .cover-2 {
+    z-index: 1;
+    transform: scaleX(0%);
+    background-color: hsl(59, 73%, 50%);
+    animation: cover-in 300ms 0s ease-in forwards, cover-out 400ms 500ms ease-out forwards;
+  }
+
+  @keyframes cover-in {
+    from { transform: scaleX(0%); transform-origin: left; }
+    to { transform: scaleX(100%); transform-origin: left; }
+  }
+  @keyframes cover-out {
+    from { transform: scaleX(100%); transform-origin: right; }
+    to { transform: scaleX(0%); transform-origin: right; }
+  }
+  @keyframes link-visibility {
+    to { visibility: visible; }
+  }
+
+  .back {
+    position: absolute;
+    z-index: 10;
+    top: 2rem;
+    right: 3rem;
+    font-size: 2rem;
+  }
+  .back a {
+    display: flex;
+    align-items: center;
+  }
+  .back span {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .line-static {
+    position: absolute;
+    z-index: 10;
+    top: 4rem;
+    right: 4rem;
+    width: 150px;
+    height: 3px;
+    border-radius: 2px;
+    background-color: var(--text);
+    opacity: 0;
+    animation: line-opacity 0.1s 0.9s forwards;
+  }
+  @keyframes line-opacity {
+    to { opacity: 1; }
+  }
+
+  .line-animation > div {
+    position: absolute;
+    z-index: 10;
+    top: 4rem;
+    left: 4rem;
+    right: 4rem;
+    bottom: 4rem;
+    opacity: 0.6;
+  }
+  .line-1 {
+    right: 0 !important;
+    left: calc((100vh - 8rem) / 2 + 4rem - 1px) !important;
+    border-bottom: 3px solid var(--text);
+    animation: Line1-in 300ms 0s ease-in forwards, Line1-out 300ms 300ms ease-out forwards;
+  }
+  .line-2 {
+    width: calc((100vh - 8rem) / 2 - 1px) !important;
+    overflow: hidden;
+  }
+  .line-2 > div {
+    border: 3px solid var(--text);
+    border-right: none;
+    position: absolute;
+    width: calc((100vh - 8rem) / 2);
+    height: calc(100vh - 8rem);
+    border-radius: 100% 0 0 100%/50% 0 0 50%;
+    transform-origin: right;
+    transform: rotate(-180deg);
+    animation: Line2-in 300ms 300ms linear forwards, Line2-out 300ms 600ms linear forwards;
+  }
+  .line-3 {
+    left: calc((100vh - 8rem) / 2 + 4rem - 1px) !important;
+    border-top: 3px solid var(--text);
+    transform: scaleX(0);
+    animation: Line3-in 300ms 600ms ease-in forwards, Line3-out 300ms 900ms ease-out forwards;
+  }
+
+  @keyframes Line1-in {
+    from { transform-origin: right; transform: scaleX(0); }
+    to { transform-origin: right; transform: scaleX(100%); }
+  }
+  @keyframes Line1-out {
+    from { transform-origin: left; transform: scaleX(100%); }
+    to { transform-origin: left; transform: scaleX(0); }
+  }
+  @keyframes Line2-in {
+    from { transform: rotate(-180deg); }
+    to { transform: rotate(0deg); }
+  }
+  @keyframes Line2-out {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(180deg); }
+  }
+  @keyframes Line3-in {
+    from { transform-origin: left; transform: scaleX(0); }
+    to { transform-origin: left; transform: scaleX(100%); }
+  }
+  @keyframes Line3-out {
+    from { transform-origin: right; transform: scaleX(100%); }
+    to { transform-origin: right; transform: scaleX(0); }
+  }
+</style>

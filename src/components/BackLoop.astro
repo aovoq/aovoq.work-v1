@@ -1,0 +1,119 @@
+---
+const lines = Array.from({ length: 21 })
+const circles = Array.from({ length: 20 })
+---
+
+<div class="backloop">
+  <div class="texts">
+    <div><span class="loop-text">Web Web Web Web Web Web Web Web Web</span></div>
+    <div><span class="loop-text">Motion Motion Motion Motion Motion</span></div>
+    <div><span class="loop-text">Design Design Design Design Design</span></div>
+  </div>
+  <div class="shapes">
+    <div class="lines-wrapper">
+      {lines.map((_, i) => (
+        <div class="line" style={`transform: rotate(${(360 / 21) * i}deg) translateX(300px)`}></div>
+      ))}
+    </div>
+    <div class="circles-wrapper">
+      {circles.map((_, i) => {
+        const size = 600 + 300 * i
+        return <div class="circle" style={`width: ${size}px; height: ${size}px;`}></div>
+      })}
+      <div class="circle accent"></div>
+      <div class="circle accent2"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .shapes {
+    z-index: 1;
+    opacity: 0.1;
+  }
+  .circles-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scale(100%);
+    animation: circleShape-scale-in 0.7s 0s ease-in-out forwards;
+  }
+  @keyframes circleShape-scale-in {
+    from { transform: scale(500%); }
+  }
+  .circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+    border: 2px solid var(--text);
+  }
+  .circle.accent {
+    width: calc(300px * 3 + 25px);
+    height: calc(300px * 3 + 25px);
+  }
+  .circle.accent2 {
+    width: calc(300px * 5 - 25px);
+    height: calc(300px * 5 - 25px);
+  }
+  .lines-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: center center;
+    transform: scale(1000%);
+    animation: lineShape-scale-in 0.5s 0.4s ease-in-out forwards,
+      lineShape-spin 300s 1.4s linear infinite;
+  }
+  @keyframes lineShape-scale-in {
+    to { transform: scale(100%); }
+  }
+  @keyframes lineShape-spin {
+    to { transform: scale(100%) rotate(360deg); }
+  }
+  .line {
+    position: absolute;
+    width: 4000px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transform-origin: left center;
+    top: 50%;
+    left: 50%;
+  }
+
+  .texts {
+    position: absolute;
+    opacity: 0.9;
+    z-index: 5;
+    display: inline-flex;
+    flex-direction: column;
+  }
+  .texts div:nth-child(1) > span {
+    animation: preparation 1s 0s ease-in-out, loop 500s 1s linear infinite;
+  }
+  .texts div:nth-child(2) > span {
+    animation: preparation 1s 0s ease-in-out, loop 500s 1s linear infinite;
+  }
+  .texts div:nth-child(3) > span {
+    animation: preparation 1s 0s ease-in-out, loop 500s 1s linear infinite;
+  }
+  .loop-text {
+    display: inline-block;
+    font-size: calc(100vh / 3);
+    color: hsl(227, 16%, 13%);
+    font-weight: bold;
+    font-family: var(--base-font);
+    line-height: 1;
+    white-space: nowrap;
+  }
+  @keyframes preparation {
+    from { transform: translateX(100vw); }
+    to { transform: translateX(0vw); }
+  }
+  @keyframes loop {
+    from { transform: translateX(0%); }
+    to { transform: translateX(-100%); }
+  }
+</style>

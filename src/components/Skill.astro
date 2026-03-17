@@ -1,0 +1,45 @@
+---
+const { name, index } = Astro.props
+const duration = 1000 - 50 * index
+const delay = 400 + 90 * index
+---
+
+<div class="skill-container">
+  <div class="skill-icon">
+    <slot />
+  </div>
+  <div class="skill-textbox">
+    <div class="skill-text" style={`animation: dropdown ${duration}ms ${delay}ms both cubic-bezier(0.075, 0.82, 0.165, 1);`}>
+      {name}
+    </div>
+  </div>
+</div>
+
+<style>
+  .skill-container {
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+  }
+  .skill-icon {
+    height: 2rem;
+    font-size: 2rem;
+    line-height: 1;
+  }
+  .skill-textbox {
+    padding-top: 0.7rem;
+    width: 100%;
+    overflow: hidden;
+  }
+  .skill-text {
+    writing-mode: vertical-rl;
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+  @keyframes dropdown {
+    from { transform: translateY(-120%); }
+    to { transform: translateY(0); }
+  }
+</style>

@@ -1,0 +1,62 @@
+---
+import '../styles/global.css'
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="hsl(227, 16%, 9%)" />
+    <meta
+      name="google-site-verification"
+      content="Srd5kp-9ayAnLT5ppH3lhdJq2Yw9OijJGWwsnllUx-8"
+    />
+    <title>ao.voq</title>
+  </head>
+  <body>
+    <main class="root">
+      <slot />
+    </main>
+    <div id="cursor-follow" class="cursor-follow"></div>
+  </body>
+</html>
+
+<style>
+  .root {
+    overflow: hidden;
+    background-color: var(--bg);
+    width: 100vw;
+    height: 100vh;
+  }
+  .cursor-follow {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+    background-color: var(--accent);
+    z-index: 999;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    opacity: 0;
+  }
+</style>
+
+<script>
+  const cursor = document.getElementById('cursor-follow')
+  if (cursor) {
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.opacity = '1'
+      setTimeout(() => {
+        cursor.style.left = e.clientX + 'px'
+        cursor.style.top = e.clientY + 'px'
+      }, 100)
+    })
+    document.addEventListener('mouseleave', (e) => {
+      cursor.style.opacity = '0'
+      cursor.style.left = e.clientX + 'px'
+      cursor.style.top = e.clientY + 'px'
+    })
+  }
+</script>

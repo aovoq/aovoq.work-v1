@@ -1,0 +1,46 @@
+---
+import Skill from './Skill.astro'
+import IconReact from './icons/IconReact.astro'
+import IconHtml5 from './icons/IconHtml5.astro'
+import IconCss from './icons/IconCss.astro'
+import IconJavascript from './icons/IconJavascript.astro'
+import IconNodejs from './icons/IconNodejs.astro'
+import IconNextjs from './icons/IconNextjs.astro'
+import IconPhp from './icons/IconPhp.astro'
+import IconAdobe from './icons/IconAdobe.astro'
+
+const skills = [
+  { name: 'React', icon: 'react' },
+  { name: 'HTML', icon: 'html5' },
+  { name: 'CSS', icon: 'css' },
+  { name: 'JavaScript', icon: 'javascript' },
+  { name: 'Node.js', icon: 'nodejs' },
+  { name: 'Next.js', icon: 'nextjs' },
+  { name: 'PHP', icon: 'php' },
+  { name: 'Adobe', icon: 'adobe' },
+]
+---
+
+<div class="skills-container">
+  {skills.map((skill, index) => (
+    <Skill name={skill.name} index={index}>
+      {skill.icon === 'react' && <IconReact size="2rem" />}
+      {skill.icon === 'html5' && <IconHtml5 size="2rem" />}
+      {skill.icon === 'css' && <IconCss size="2rem" />}
+      {skill.icon === 'javascript' && <IconJavascript size="2rem" />}
+      {skill.icon === 'nodejs' && <IconNodejs size="2rem" />}
+      {skill.icon === 'nextjs' && <IconNextjs size="2rem" />}
+      {skill.icon === 'php' && <IconPhp size="2rem" />}
+      {skill.icon === 'adobe' && <IconAdobe size="2rem" />}
+    </Skill>
+  ))}
+</div>
+
+<style>
+  .skills-container {
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    padding: 0 3rem;
+  }
+</style>

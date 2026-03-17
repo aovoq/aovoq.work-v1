@@ -1,0 +1,122 @@
+---
+---
+
+<div id="loading" class="loading-container">
+  <div class="loading-outer">
+    <div class="loading-borders">
+      <div class="border-line border-1"></div>
+      <div class="border-line border-2"></div>
+      <div class="border-line border-3"></div>
+      <div class="border-line border-4"></div>
+    </div>
+    <div class="loading-inner">
+      <div class="row row-high">
+        <div class="char-wrapper"><span style="animation-delay: 550ms;" class="char char-high-1">w</span></div>
+        <div class="char-wrapper"><span style="animation-delay: 450ms;" class="char char-high-2">h</span></div>
+        <div class="char-wrapper"><span style="animation-delay: 750ms;" class="char char-high-3">o</span></div>
+      </div>
+      <div class="row row-middle">
+        <div class="char-wrapper"><span style="animation-delay: 650ms;" class="char char-mid-1">a</span></div>
+        <div class="char-wrapper"><span style="animation-delay: 1150ms;" class="char char-mid-2">r</span></div>
+        <div class="char-wrapper"><span id="loading-last-char" style="animation-delay: 1350ms;" class="char char-mid-3">e</span></div>
+      </div>
+      <div class="row row-low">
+        <div class="char-wrapper"><span style="animation-delay: 1250ms;" class="char char-low-1">y</span></div>
+        <div class="char-wrapper"><span style="animation-delay: 950ms;" class="char char-low-2">o</span></div>
+        <div class="char-wrapper"><span style="animation-delay: 1050ms;" class="char char-low-3">u</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .loading-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text);
+    font-family: var(--base-font);
+    z-index: 100;
+  }
+  .loading-outer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .loading-inner {
+    padding: 2.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 1;
+  }
+  .loading-borders {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .border-line {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px;
+    border-color: var(--text);
+  }
+  .border-1 {
+    border-top-style: solid;
+    transform: translate(105%, 0%);
+    animation: slide-in 150ms 0ms forwards cubic-bezier(0.35, 0, 0.65, 0.19);
+  }
+  .border-2 {
+    border-left-style: solid;
+    transform: translate(0%, -105%);
+    animation: slide-in 150ms 150ms forwards cubic-bezier(0.35, 0.11, 0.6, 0.31);
+  }
+  .border-3 {
+    border-bottom-style: solid;
+    transform: translate(-105%, 0%);
+    animation: slide-in 150ms 300ms forwards cubic-bezier(0.4, 0.5, 0.6, 0.89);
+  }
+  .border-4 {
+    border-right-style: solid;
+    transform: translate(0%, 105%);
+    animation: slide-in 150ms 450ms forwards cubic-bezier(0.31, 0.69, 0.54, 0.98);
+  }
+  @keyframes slide-in {
+    to { transform: translate(0%, 0%); }
+  }
+  .char-wrapper {
+    overflow: hidden;
+  }
+  .char-wrapper > span {
+    display: inline-block;
+    animation-name: slide-in;
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+  }
+
+  /* High row initial transforms */
+  .char-high-1 { transform: translate(-100%, -100%); }
+  .char-high-2 { transform: translate(0%, -100%); }
+  .char-high-3 { transform: translate(100%, 100%); }
+
+  /* Middle row initial transforms */
+  .char-mid-1 { transform: translate(-100%, 0%); }
+  .char-mid-2 { transform: translate(0%, 100%); }
+  .char-mid-3 { transform: translate(100%, 0%); }
+
+  /* Low row initial transforms */
+  .char-low-1 { transform: translate(-100%, 100%); }
+  .char-low-2 { transform: translate(0%, -100%); }
+  .char-low-3 { transform: translate(0%, -100%); }
+</style>

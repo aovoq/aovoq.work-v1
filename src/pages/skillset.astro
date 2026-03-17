@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/Header.astro'
+import Skills from '../components/Skills.astro'
+---
+
+<Layout>
+  <div class="skillset-container">
+    <Header />
+    <div class="upper">
+      <div class="title">
+        <h1 class="headline">Skillset</h1>
+        <h2 class="outline">Web/Motion/Design</h2>
+      </div>
+      <div class="desc">
+        <p>
+          私のスキルセットはすべて独学です。<br />
+          それらはすべて信頼できませんが、<br />
+          私を愛してください。
+        </p>
+      </div>
+    </div>
+    <div class="lower">
+      <div class="anime-wrapper">
+        <Skills />
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .skillset-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .upper {
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 3rem;
+    max-width: 900px;
+    margin: auto;
+  }
+  .lower {
+    border-top: 1px solid var(--text);
+    height: 50%;
+  }
+  .anime-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    animation: right-to-in 1.5s 0s both cubic-bezier(0, 0, 0.35, 0.98);
+  }
+  @keyframes right-to-in {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+  .headline {
+    color: var(--text);
+    font-size: 3.6rem;
+    font-weight: bold;
+    font-family: var(--base-font);
+    letter-spacing: 0.2rem;
+  }
+  .outline {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text);
+    text-stroke: 1px var(--text);
+    letter-spacing: 0.2rem;
+  }
+  .desc {
+    color: var(--text);
+    font-size: 1.2rem;
+    line-height: 1.7;
+    letter-spacing: 0.2rem;
+  }
+</style>
