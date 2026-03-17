@@ -1,8 +1,476 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Soon from '../components/Soon.astro'
+import Header from '../components/Header.astro'
+
+const projects = [
+  {
+    id: '01',
+    title: 'クイズでつなごう エコチル調査 with QuizKnock',
+    description: '環境省 x QuizKnock コラボ企画 / web実装 / frontend',
+    client: 'baton8',
+    image: 'https://dummyimage.com/800x450/333333/ffe81a.jpg',
+    links: [
+      { label: 'サイト', url: 'https://ecochil.voq.workers.dev/' },
+    ],
+  },
+  {
+    id: '02',
+    title: 'Galaxy Ambassador 接客タイプ別診断',
+    description: 'SoftBank x Galaxy x QuizKnock 接客スタッフの教育用企画 / web実装 / frontend',
+    client: 'baton8',
+    image: 'https://dummyimage.com/800x450/333333/ffe81a.jpg',
+    links: [
+      { label: 'サイト', url: 'https://galaxy-personality.voq.workers.dev/' },
+    ],
+  },
+  {
+    id: '03',
+    title: 'QuizKnockに挑め！ Galaxyクイズキャンペーン',
+    description: 'SoftBank x Galaxy x QuizKnock コラボ企画 / web実装 / frontend',
+    client: 'baton8',
+    image: 'https://dummyimage.com/800x450/333333/ffe81a.jpg',
+    links: [
+      { label: 'サイト', url: 'https://galaxy-quiz.voq.workers.dev/' },
+    ],
+  },
+  {
+    id: '04',
+    title: '時の狭間の秘密の頁',
+    description: 'JR東海 x QuizKnock コラボ企画 / QR+クイズ / web実装 / frontend, backend',
+    client: 'baton8',
+    image: 'https://dummyimage.com/800x450/333333/ffe81a.jpg',
+    links: [
+      { label: 'LP', url: 'https://jr-tokai-portfolio.voq.workers.dev' },
+      { label: 'アプリ', url: 'https://jr-tokai-portfolio.voq.workers.dev/game/' },
+      { label: 'デバッグ', url: 'https://jr-tokai-portfolio.voq.workers.dev/debug/' },
+    ],
+    answers: [
+      { q: 'Q1', place: '唐招提寺', answer: '航海（こうかい）', url: 'https://jr-tokai-portfolio.voq.workers.dev/game/#/quiz/eFbi2FDx/quiz' },
+      { q: 'Q2', place: '薬師寺', answer: '音楽（おんがく）', url: 'https://jr-tokai-portfolio.voq.workers.dev/game/#/quiz/fc6pHyT7/quiz' },
+      { q: 'Q3', place: '西大寺', answer: '国宝（こくほう）', url: 'https://jr-tokai-portfolio.voq.workers.dev/game/#/quiz/LOHJshFp/quiz' },
+      { q: 'Q4', place: '平城宮跡歴史公園', answer: '古（いにしえ）', url: 'https://jr-tokai-portfolio.voq.workers.dev/game/#/quiz/TgUrnvvl/quiz' },
+      { q: 'Q5', place: '元興寺', answer: '時代（じだい）', url: 'https://jr-tokai-portfolio.voq.workers.dev/game/#/quiz/EEOz19AE/quiz' },
+      { q: 'Q6', place: '奈良国立博物館', answer: '文化財（ぶんかざい）', url: 'https://jr-tokai-portfolio.voq.workers.dev/game/#/quiz/KJoUqNsE/quiz' },
+      { q: 'Q7', place: '最後の謎', answer: '大和の国（やまとのくに）', url: 'https://jr-tokai-portfolio.voq.workers.dev/game/#/quiz/CMCVZ8C2/quiz' },
+    ],
+  },
+  {
+    id: '05',
+    title: '7つの絵画とかくされたヒミツ',
+    description: '京都市京セラ美術館 x Artoone コラボ企画 / NFC+クイズ / frontend, backend',
+    client: 'baton8',
+    image: '/images/works/7paintings.png',
+    links: [
+      { label: 'アプリ', url: 'https://dokomiru.pages.dev/#/' },
+      { label: 'デバッグ', url: 'https://dokomiru.pages.dev/#/debug' },
+    ],
+    answers: [
+      { q: 'Q1', place: '', answer: 'マグダラのマリアの回心 / 7', url: 'https://dokomiru.pages.dev/#/quiz/01985ef9-ef64-7d52-b505-b45494710ec4' },
+      { q: 'Q2', place: '', answer: 'アレクサンドリアの聖カタリナの神秘の結婚 / 14', url: 'https://dokomiru.pages.dev/#/quiz/01985ef9-ef64-7b68-a9fb-71532644c8a0' },
+      { q: 'Q3', place: '', answer: 'トロイアから逃れるアエネアスとその父 / 31', url: 'https://dokomiru.pages.dev/#/quiz/01985ef9-ef64-7904-a5ba-95344f61a54e' },
+      { q: 'Q4', place: '', answer: '少女の肖像 / 40', url: 'https://dokomiru.pages.dev/#/quiz/01985ef9-ef64-70e8-93d9-a0f6cc83082c' },
+      { q: 'Q5', place: '', answer: '賭博場 / 46', url: 'https://dokomiru.pages.dev/#/quiz/01985ef9-ef64-75e1-8982-82ef56de3079' },
+      { q: 'Q6', place: '', answer: '闖入者 / 57', url: 'https://dokomiru.pages.dev/#/quiz/01985ef9-ef64-7315-8e1d-277b4ff1c9f3' },
+      { q: 'EXTRA', place: '', answer: 'ポティエ・ド・ジェヴル枢機卿エティエンヌ゠ルネ / 47', url: 'https://dokomiru.pages.dev/#/quiz/EXTRA/result' },
+    ],
+  },
+  {
+    id: '06',
+    title: 'TXデジタルクイズラリー',
+    description: 'TX x QuizKnock コラボ企画 / QR+クイズ / web実装 / frontend, backend',
+    client: 'baton8',
+    image: 'https://dummyimage.com/800x450/333333/ffe81a.jpg',
+    links: [
+      { label: 'アプリ', url: 'https://tx-quizrally-portfolio.voq.workers.dev/app' },
+      { label: 'デバッグ', url: 'https://tx-quizrally-portfolio.voq.workers.dev/test' },
+    ],
+    answers: [
+      { q: 'Q1', place: '北千住駅', answer: '400年前', url: 'https://tx-quizrally-portfolio.voq.workers.dev/app#itemId=aB3cD4' },
+      { q: 'Q2', place: '八潮駅', answer: '野菜の「小松菜」', url: 'https://tx-quizrally-portfolio.voq.workers.dev/app#itemId=eF5gH6' },
+      { q: 'Q3', place: '流山おおたかの森駅', answer: '近辺で見られる野鳥「大鷹（オオタカ）」', url: 'https://tx-quizrally-portfolio.voq.workers.dev/app#itemId=iJ7kL8' },
+      { q: 'Q4', place: '守谷駅', answer: '全ての車両に車いす及びベビーカー用のスペースを設置', url: 'https://tx-quizrally-portfolio.voq.workers.dev/app#itemId=mN9oP0' },
+      { q: 'Q5', place: 'つくば駅', answer: 'ロケット', url: 'https://tx-quizrally-portfolio.voq.workers.dev/app#itemId=qR1sT2' },
+      { q: 'Q6', place: '秋葉原駅', answer: 'ラジオ', url: 'https://tx-quizrally-portfolio.voq.workers.dev/app#itemId=uV3wX4' },
+      { q: 'Q7', place: '浅草駅', answer: 'エレベーター', url: 'https://tx-quizrally-portfolio.voq.workers.dev/app#itemId=yZ5aB6' },
+      { q: 'Q8', place: '六町駅', answer: '矢', url: 'https://tx-quizrally-portfolio.voq.workers.dev/app#itemId=cD7eF8' },
+      { q: 'Q9', place: '柏の葉キャンパス駅', answer: '放牧した馬を囲い込むため', url: 'https://tx-quizrally-portfolio.voq.workers.dev/app#itemId=gH9iJ0' },
+      { q: 'Q10', place: '万博記念公園駅', answer: '岡本太郎', url: 'https://tx-quizrally-portfolio.voq.workers.dev/app#itemId=kL1mN2' },
+    ],
+  },
+  {
+    id: '07',
+    title: 'ぐるっと冒険！万博クイズラリー',
+    description: 'EXPO2025 x QuizKnock / NFC+クイズ / web実装 / frontend, backend',
+    client: 'baton8',
+    image: 'https://dummyimage.com/800x450/333333/ffe81a.jpg',
+    links: [
+      { label: 'アプリ', url: 'https://expo2025-quiz-rally.voq.workers.dev/app' },
+      { label: 'デバッグ', url: 'https://expo2025-quiz-rally.voq.workers.dev/test' },
+    ],
+    answers: [
+      { q: 'Q1', place: '', answer: '3 水素と窒素', url: 'https://expo2025-quiz-rally.voq.workers.dev/app#itemId=J0k1L2' },
+      { q: 'Q2', place: '', answer: '2 コーヒー', url: 'https://expo2025-quiz-rally.voq.workers.dev/app#itemId=M3n4O5' },
+      { q: 'Q3', place: '', answer: '1 3分の1', url: 'https://expo2025-quiz-rally.voq.workers.dev/app#itemId=G7h8I9' },
+      { q: 'Q4', place: '', answer: '1 水', url: 'https://expo2025-quiz-rally.voq.workers.dev/app#itemId=A1b2C3' },
+      { q: 'Q5', place: '', answer: '2 地球', url: 'https://expo2025-quiz-rally.voq.workers.dev/app#itemId=D4e5F6' },
+    ],
+  },
+]
 ---
 
 <Layout>
-  <Soon />
+  <div class="works-container">
+    <Header />
+
+    <div class="works-scroll">
+      <div class="works-scroll-content">
+      <div class="works-hero">
+        <h1 class="works-title">Works</h1>
+        <p class="works-subtitle">Client: baton8</p>
+      </div>
+
+      <div class="works-list">
+        {projects.map((project) => (
+          <article class="project" id={`project-${project.id}`}>
+            <div class="project-header">
+              <span class="project-id">{project.id}</span>
+              <h2 class="project-title">{project.title}</h2>
+            </div>
+
+            {project.description && (
+              <p class="project-description">{project.description}</p>
+            )}
+
+            <div class="project-body">
+              <div class="project-visual">
+                <img src={project.image} alt={project.title} loading="lazy" />
+              </div>
+
+              <div class="project-content">
+                <div class="project-links">
+                  {project.links.map((link) => (
+                    <a href={link.url} target="_blank" rel="noopener noreferrer" class="project-link">
+                      {link.label}
+                      <span class="link-arrow">↗</span>
+                    </a>
+                  ))}
+                </div>
+
+                {project.answers && (() => {
+                  const hasPlace = project.answers.some((a) => a.place !== '')
+                  return (
+                    <div class="project-answers">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th></th>
+                            {hasPlace && <th>場所</th>}
+                            <th>答え</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {project.answers.map((a) => (
+                            <tr>
+                              <td class="answer-q">{a.q}</td>
+                              {hasPlace && <td class="answer-place">{a.place}</td>}
+                              <td class="answer-text">{a.answer}</td>
+                              <td class="answer-link">
+                                <a href={a.url} target="_blank" rel="noopener noreferrer">開く ↗</a>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )
+                })()}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+      </div>
+    </div>
+  </div>
 </Layout>
+
+<script>
+  import Lenis from 'lenis'
+
+  const scrollEl = document.querySelector('.works-scroll') as HTMLElement
+  if (scrollEl) {
+    const contentEl = scrollEl.querySelector('.works-scroll-content') as HTMLElement
+    const lenis = new Lenis({
+      wrapper: scrollEl,
+      content: contentEl,
+      lerp: 0.18,
+      smoothWheel: true,
+    })
+
+    function raf(time: number) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+  }
+</script>
+
+<style>
+  .works-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .works-scroll {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+  }
+  .works-scroll::-webkit-scrollbar {
+    width: 3px;
+  }
+  .works-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .works-scroll::-webkit-scrollbar-thumb {
+    background: var(--accent);
+  }
+
+  /* Hero */
+  .works-hero {
+    padding: 8rem 4rem 4rem;
+    border-bottom: 1px solid var(--text);
+  }
+  .works-title {
+    color: var(--text);
+    font-size: 4.8rem;
+    font-weight: bold;
+    font-family: var(--base-font);
+    letter-spacing: 0.3rem;
+    animation: fade-in 500ms var(--ease-out) both;
+  }
+  .works-subtitle {
+    color: var(--text);
+    opacity: 0.4;
+    font-size: 1.2rem;
+    font-family: var(--base-font);
+    letter-spacing: 0.2rem;
+    margin-top: 0.8rem;
+    animation: fade-in 500ms 100ms var(--ease-out) both;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Project list */
+  .works-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Project card */
+  .project {
+    border-bottom: 1px solid color-mix(in srgb, var(--text) 15%, transparent);
+    padding: 4rem;
+    animation: project-in 600ms var(--ease-out) both;
+    transition: background 300ms var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .project:hover {
+      background: color-mix(in srgb, var(--text) 4%, transparent);
+    }
+  }
+  .project:nth-child(1) { animation-delay: 150ms; }
+  .project:nth-child(2) { animation-delay: 200ms; }
+  .project:nth-child(3) { animation-delay: 250ms; }
+  .project:nth-child(4) { animation-delay: 300ms; }
+  .project:nth-child(5) { animation-delay: 350ms; }
+  .project:nth-child(6) { animation-delay: 400ms; }
+  .project:nth-child(7) { animation-delay: 450ms; }
+
+  @keyframes project-in {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .project-header {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    margin-bottom: 2.4rem;
+  }
+  .project-id {
+    color: var(--accent);
+    font-size: 1.2rem;
+    font-family: var(--base-font);
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    flex-shrink: 0;
+    transition: transform 300ms var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .project:hover .project-id {
+      transform: translateX(-4px);
+    }
+  }
+  .project-title {
+    color: var(--text);
+    font-size: 2.2rem;
+    font-weight: bold;
+    font-family: var(--base-font);
+    letter-spacing: 0.05rem;
+    line-height: 1.4;
+  }
+
+  .project-description {
+    color: var(--text);
+    opacity: 0.5;
+    font-size: 1.1rem;
+    font-family: var(--base-font);
+    letter-spacing: 0.03rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .project-body {
+    display: flex;
+    gap: 3.2rem;
+  }
+
+  .project-visual {
+    flex-shrink: 0;
+    width: 240px;
+  }
+  .project-visual img {
+    width: 100%;
+    display: block;
+    opacity: 0.85;
+    transition: opacity 300ms var(--ease-out), transform 300ms var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .project-visual img:hover {
+      opacity: 1;
+      transform: scale(1.03);
+    }
+  }
+
+  .project-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* Links */
+  .project-links {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1.2rem;
+    font-size: 1.1rem;
+    font-family: var(--base-font);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    letter-spacing: 0.05rem;
+    transition: background 200ms var(--ease-out), color 200ms var(--ease-out), transform 200ms var(--ease-out), gap 200ms var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .project-link:hover {
+      background: var(--accent);
+      color: var(--bg);
+      gap: 0.8rem;
+    }
+    .project-link:hover .link-arrow {
+      transform: translate(1px, -1px);
+    }
+  }
+  .project-link:active {
+    transform: scale(0.97);
+  }
+  .link-arrow {
+    font-size: 0.9rem;
+    display: inline-block;
+    transition: transform 200ms var(--ease-out);
+  }
+
+  /* Answer table */
+  .project-answers {
+    overflow-x: auto;
+  }
+  .project-answers table {
+    width: 100%;
+    font-size: 1.1rem;
+    font-family: var(--base-font);
+    color: var(--text);
+  }
+  .project-answers thead {
+    border-bottom: 1px solid color-mix(in srgb, var(--text) 25%, transparent);
+  }
+  .project-answers th {
+    text-align: left;
+    padding: 0.4rem 1rem 0.6rem 0;
+    font-size: 1rem;
+    opacity: 0.4;
+    font-weight: normal;
+    white-space: nowrap;
+  }
+  .project-answers tbody tr {
+    transition: background 200ms var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .project-answers tbody tr:hover {
+      background: color-mix(in srgb, var(--text) 6%, transparent);
+    }
+    .project-answers tbody tr:hover .answer-link a {
+      opacity: 1;
+      color: var(--accent);
+    }
+  }
+  .project-answers td {
+    padding: 0.5rem 1rem 0.5rem 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .answer-q {
+    color: var(--accent);
+    font-weight: bold;
+    white-space: nowrap;
+    width: 4rem;
+  }
+  .answer-place {
+    opacity: 0.6;
+    white-space: nowrap;
+  }
+  .answer-text {
+    word-break: break-all;
+  }
+  .answer-link {
+    white-space: nowrap;
+    width: 5rem;
+    text-align: right;
+  }
+  .answer-link a {
+    color: var(--text);
+    opacity: 0.5;
+    font-size: 1rem;
+    transition: opacity 200ms var(--ease-out), color 200ms var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .answer-link a:hover {
+      opacity: 1;
+      color: var(--accent);
+    }
+  }
+</style>
