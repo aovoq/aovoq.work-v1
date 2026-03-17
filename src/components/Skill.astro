@@ -1,7 +1,7 @@
 ---
 const { name, index } = Astro.props
-const duration = 1000 - 50 * index
-const delay = 400 + 90 * index
+const duration = 400 - 15 * index
+const delay = 200 + 60 * index
 ---
 
 <div class="skill-container">
@@ -9,7 +9,7 @@ const delay = 400 + 90 * index
     <slot />
   </div>
   <div class="skill-textbox">
-    <div class="skill-text" style={`animation: dropdown ${duration}ms ${delay}ms both cubic-bezier(0.075, 0.82, 0.165, 1);`}>
+    <div class="skill-text" style={`animation: dropdown ${duration}ms ${delay}ms both var(--ease-out-expo);`}>
       {name}
     </div>
   </div>
@@ -39,7 +39,7 @@ const delay = 400 + 90 * index
     line-height: 2rem;
   }
   @keyframes dropdown {
-    from { transform: translateY(-120%); }
-    to { transform: translateY(0); }
+    from { transform: translateY(-120%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
   }
 </style>

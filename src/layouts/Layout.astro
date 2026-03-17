@@ -5,7 +5,10 @@ import '../styles/global.css'
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="hsl(227, 16%, 9%)" />
     <meta
@@ -40,23 +43,21 @@ import '../styles/global.css'
     pointer-events: none;
     mix-blend-mode: overlay;
     opacity: 0;
+    transition: left 180ms var(--ease-out), top 180ms var(--ease-out), opacity 200ms var(--ease-out);
+    will-change: left, top, opacity;
   }
 </style>
 
 <script>
   const cursor = document.getElementById('cursor-follow')
-  if (cursor) {
+  if (cursor && matchMedia('(hover: hover) and (pointer: fine)').matches) {
     document.addEventListener('mousemove', (e) => {
       cursor.style.opacity = '1'
-      setTimeout(() => {
-        cursor.style.left = e.clientX + 'px'
-        cursor.style.top = e.clientY + 'px'
-      }, 100)
-    })
-    document.addEventListener('mouseleave', (e) => {
-      cursor.style.opacity = '0'
       cursor.style.left = e.clientX + 'px'
       cursor.style.top = e.clientY + 'px'
+    })
+    document.addEventListener('mouseleave', () => {
+      cursor.style.opacity = '0'
     })
   }
 </script>

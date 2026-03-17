@@ -52,13 +52,13 @@ const { home = false } = Astro.props
     z-index: 2;
     transform: scaleX(0%);
     background-color: hsl(59, 93%, 65%);
-    animation: cover-in 300ms 200ms ease-in forwards, cover-out 300ms 400ms ease-out forwards;
+    animation: cover-in 250ms 200ms var(--ease-out) forwards, cover-out 200ms 400ms var(--ease-out) forwards;
   }
   .cover-2 {
     z-index: 1;
     transform: scaleX(0%);
     background-color: hsl(59, 73%, 50%);
-    animation: cover-in 300ms 0s ease-in forwards, cover-out 400ms 500ms ease-out forwards;
+    animation: cover-in 250ms 0s var(--ease-out) forwards, cover-out 300ms 500ms var(--ease-out) forwards;
   }
 
   @keyframes cover-in {
@@ -83,6 +83,15 @@ const { home = false } = Astro.props
   .back a {
     display: flex;
     align-items: center;
+    transition: transform 160ms var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .back a:hover {
+      transform: translateX(-3px);
+    }
+  }
+  .back a:active {
+    transform: scale(0.97);
   }
   .back span {
     font-size: 1rem;
@@ -118,7 +127,7 @@ const { home = false } = Astro.props
     right: 0 !important;
     left: calc((100vh - 8rem) / 2 + 4rem - 1px) !important;
     border-bottom: 3px solid var(--text);
-    animation: Line1-in 300ms 0s ease-in forwards, Line1-out 300ms 300ms ease-out forwards;
+    animation: Line1-in 250ms 0s var(--ease-out) forwards, Line1-out 200ms 300ms var(--ease-out) forwards;
   }
   .line-2 {
     width: calc((100vh - 8rem) / 2 - 1px) !important;
@@ -139,7 +148,7 @@ const { home = false } = Astro.props
     left: calc((100vh - 8rem) / 2 + 4rem - 1px) !important;
     border-top: 3px solid var(--text);
     transform: scaleX(0);
-    animation: Line3-in 300ms 600ms ease-in forwards, Line3-out 300ms 900ms ease-out forwards;
+    animation: Line3-in 250ms 600ms var(--ease-out) forwards, Line3-out 200ms 900ms var(--ease-out) forwards;
   }
 
   @keyframes Line1-in {
